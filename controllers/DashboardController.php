@@ -63,7 +63,6 @@ class DashboardController extends Controller
     {
         // Check if the user is a guest
         if (Yii::$app->user->isGuest) {
-            // Redirect the guest user to the login page
             return $this->redirect(['login']);
         }
 
@@ -91,15 +90,17 @@ class DashboardController extends Controller
 
     public function actionIndex()
     {
-
-        // Instantiate the Sale model
+        $saleProvider = new \yii\data\ActiveDataProvider([
+            'query' => Sale::find()->with('products'),
+            'pagination' => false,
+        ]);
+        
         $saleModel = new Sale();
-
+        
         // Check if the form is submitted
         if (Yii::$app->request->isPost) {
-            // Load the form data into the model
             $saleModel->load(Yii::$app->request->post());
-
+    
             // Validate the form data
             if ($saleModel->validate()) {
                 // Save the data
@@ -112,18 +113,19 @@ class DashboardController extends Controller
                 }
             }
         }
-
+    
         $searchModel = new ProductSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->query->orderBy(['created_at' => SORT_DESC]);
-
+    
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
             'saleModel' => $saleModel,
-
+            'saleProvider' => $saleProvider,
         ]);
     }
+    
 
 
 
@@ -156,8 +158,6 @@ class DashboardController extends Controller
 
 
         ]);
-
-
 
         return $this->render('sales', [
             'saleProvider' => $saleProvider,
