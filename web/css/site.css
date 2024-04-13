@@ -2,11 +2,6 @@ main > .container {
     padding: 70px 15px 20px;
 }
 
-.footer {
-    background-color: #f5f5f5;
-    font-size: .9em;
-    height: 60px;
-}
 
 .footer > .container {
     padding-right: 15px;
@@ -18,17 +13,7 @@ main > .container {
     font-style: italic;
 }
 
-/* add sorting icons to gridview sort links */
-a.asc:after, a.desc:after {
-    content: '';
-    left: 3px;
-    display: inline-block;
-    width: 0;
-    height: 0;
-    border: solid 5px transparent;
-    margin: 4px 4px 2px 4px;
-    background: transparent;
-}
+
 
 a.asc:after {
     border-bottom: solid 7px #212529;
@@ -44,11 +29,7 @@ a.desc:after {
     white-space: nowrap;
 }
 
-.hint-block {
-    display: block;
-    margin-top: 5px;
-    color: #999;
-}
+
 
 .error-summary {
     color: #a94442;
@@ -76,7 +57,7 @@ a.desc:after {
 .nav > li > form > button.logout:focus,
 .nav > li > form > button.logout:hover {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgb(255, 255, 255);
 }
 
 .nav > li > form > button.logout:focus {
@@ -86,4 +67,5 @@ a.desc:after {
 .form-group {
     margin-bottom: 1rem;
 }
+
 

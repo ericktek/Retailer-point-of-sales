@@ -42,10 +42,13 @@ class AuthController extends Controller
      */
   
 
-     public function actionLogin()
+     public function actionLogin($message = null)
      {
          $model = new LoginForm();
-     
+
+         if ($message !== null) {
+            $model->registrationMessage = $message;
+        }
          if ($model->load(Yii::$app->request->post()) && $model->login()) {
              return $this->redirect(['/dashboard']);
          }
@@ -62,6 +65,13 @@ class AuthController extends Controller
      
          if ($this->request->isPost) {
              $model->load($this->request->post());
+
+             // Check if the user already exists
+            //  $existingUser = User::find()->where(['username' => $model->username])->orWhere(['email' => $model->email])->one();
+            //  if ($existingUser !== null) {
+            //      Yii::$app->session->setFlash('error', 'User already exists. Please choose a different username or email.');
+            //      return $this->redirect(['signup']);
+            //  }
              
              // Generate auth_key
              $model->auth_key = Yii::$app->security->generateRandomString();
@@ -73,7 +83,9 @@ class AuthController extends Controller
              }
      
              if ($model->save()) {
-                 return $this->redirect(['login']);
+                // $message = 'Registered successfully. Please! Login  ';
+                //['message' => $message]
+                return $this->redirect(['login']);
              }
          }
      

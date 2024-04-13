@@ -15,6 +15,7 @@ class LoginForm extends Model
 {
     public $username;
     public $password;
+    public $registrationMessage;
 
     private $_user = false;
 

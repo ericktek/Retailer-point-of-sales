@@ -6,13 +6,20 @@
 use app\assets\AppAsset;
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
+use yii\bootstrap5\Alert;
+
+
 
 ?>
 
 
 
 <div  class="container">
+
+
     <div class="row">
+
+
         <div class="col-md-5 offset-md-cust">
             <div class="card">
   
@@ -26,6 +33,18 @@ use yii\bootstrap5\Html;
                     <h1 class="title">Sign In</h1>
                     <p class="lead">Online Retailer Point of Sales</p>
                 </div>
+
+                <?php
+
+                // Display registration message if it exists
+                if (isset($model->registrationMessage)) {
+                    echo Alert::widget([
+                        'options' => ['class' => 'alert-success'],
+                        'body' => $model->registrationMessage,
+                    ]);
+                }
+                ?>
+
 
                 <?= $form->field($model, 'username')->textInput(['id' => 'username', 'placeholder' => 'John Doe'])->label('Username') ?>
 

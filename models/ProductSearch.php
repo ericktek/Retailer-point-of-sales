@@ -19,7 +19,7 @@ class ProductSearch extends Products
         return [
             [['id', 'qty'], 'integer'],
             [['name'], 'safe'],
-            [['price'], 'number'],
+            [['expense'], 'number'],
         ];
     }
 
@@ -60,7 +60,7 @@ class ProductSearch extends Products
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'price' => $this->price,
+            'expense' => $this->expense,
             'qty' => $this->qty,
         ]);
 

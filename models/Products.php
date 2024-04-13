@@ -28,10 +28,13 @@ class Products extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'price', 'qty'], 'required'],
-            [['price'], 'number'],
+            [['name', 'expense', 'qty', 'buying_price', 'selling_price'], 'required'],
+            [['expense'], 'number'],
+            [['buying_price'], 'number'],
+            [['selling_price'], 'number'],
             [['qty'], 'integer'],
             [['name'], 'string', 'max' => 255],
+           
         ];
     }
 
@@ -43,7 +46,9 @@ class Products extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
-            'price' => 'Price',
+            'expense' => 'Expenses',
+            'buying_price' => 'buying_price',
+            'selling_price' => 'selling_price',
             'qty' => 'Qty',
         ];
     }

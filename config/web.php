@@ -5,7 +5,7 @@ $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
-    'name' => 'My first App test suite',
+    // 'name' => 'My first App test suite',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -27,7 +27,8 @@ $config = [
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            // 'errorAction' => 'site/error',
+            'errorAction' => 'auth/error',
         ],
         'mailer' => [
             'class' => \yii\symfonymailer\Mailer::class,
@@ -54,6 +55,10 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '' => 'auth/login',
+                'cart/add-to-cart' => 'cart/add-to-cart', 
+                'dashboard/export-pdf' => 'dashboard/export-pdf',
+
+
             ],
         ],
         
